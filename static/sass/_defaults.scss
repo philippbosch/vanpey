@@ -40,7 +40,7 @@ html {
 /* Body -------------------------------------------------------------- */
 
 body {
-  @extend .serif;
+  @extend .sans;
   color: $base; }
 
 /* Selected Text -------------------------------------------------------------- */
@@ -83,9 +83,6 @@ h2, h3, h4, h5, h6 {
 h1 {
   @include adjust-font-size-to(21px);
   @include trailer(1, 21px); }
-
-h1, h2 {
-  @extend .allcaps; }
 
 h3 {
   font-weight: bold; }

@@ -3,6 +3,7 @@
 // Imports --------------------------------------------------------------
 
 @import "defaults";
+@import "compass/css3";
 
 /* Layout -------------------------------------------------------------- */
 
@@ -12,7 +13,8 @@
 // or @extend it to apply multiple containers on your site.
 .container {
   @include container;
-  @include show-grid("grid.png"); }
+  // @include show-grid("grid.png"); 
+}
 
 // show-grid loads a 64+16x24 grid image by default
 // For other grid settings, run `compass grid-img 30+10x20`
@@ -20,3 +22,124 @@
 // and 20 is the (optional) line-height.
 
 /* Styles -------------------------------------------------------------- */
+
+#page {
+    margin-top: 4em;
+    margin-bottom: 2em;
+}
+
+#header {
+    position: relative;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+#logo {
+    @include columns(3);
+    @include alpha;
+    height: 43px;
+    margin-bottom: 1em;
+    background: image-url("logo.png") 0 0 no-repeat;
+    
+    span {
+        display: block;
+        text-indent: -9999px;
+    }
+}
+
+#nav {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    @include alpha;
+    
+    ul {
+        list-style: none;
+        margin: 0;
+    }
+    
+    a {
+        font-weight: bold;
+        line-height: 1;
+        display: block;
+        margin-top: 0.1em;
+        
+        &:hover {
+            color: #999;
+            
+            .sub {
+                visibility: visible;
+            }
+        }
+        
+        .sub {
+            font-weight: normal;
+            font-size: 0.6em;
+            line-height: 1;
+            display: block;
+            color: #888;
+            visibility: hidden;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+#content {
+    @include full;
+    padding-top: 4em;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+#images {
+    margin-bottom: 2em;
+    
+    #images-large {
+        @include columns(8);
+        @include omega;
+        
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+    
+    #images-thumbs {
+        @include columns(1);
+        
+        a {
+            display: block;
+            width: 62px;
+            height: 62px;
+            margin-bottom: 1em;
+            
+            &.odd {
+                @include float(left);
+            }
+            
+            &.even {
+                @include float(right);
+            }
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            padding: 3px;
+            margin: -4px;
+            border: 1px solid #fff;
+            
+            &.selected {
+                border-color: #ddd;
+            }
+        }
+    }
+}

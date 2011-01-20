@@ -1,5 +1,17 @@
 ---
 title: My Site
+products:
+- Bücherregal
+- Schiebetürenschrank
+- Sofahänger
+- Papiertiger
+- Handschuhbox
+- Nachttisch
+- Flipbox
+- Schuhregal
+- Sofatisch
+- BoxBank
+
 ---
 <!doctype html>
 <html>
@@ -12,11 +24,39 @@ title: My Site
     
     <body>
         <div id="page" class="container">
+            <div id="header">
+                <div id="logo"><span>VANPEY</span></div>
+                
+                <div id="nav">
+                    <ul>
+                        {% for product in page.products %}
+                            <li><a href="#">{{ product }}<br><span class="sub">Lorem ipsum dolor sit amet</span></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                {% if page.images|size %}
+                <div id="images">
+                    <div id="images-large">
+                        {% for image in page.images %}
+                            <img src="/static/images/{{ image }}" id="large-{{ forloop.index }}" rel="thumb-{{ forloop.index }}">
+                        {% endfor %}
+                    </div>
+                    <div id="images-thumbs">
+                        {% for image in page.images %}
+                            <a href="#large-{{ forloop.index }}" class="{% cycle 'odd', 'even' %}"><img src="/static/images/thumbs/{{ image }}" id="thumb-{{ forloop.index }}"></a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
             <div id="content">
                 {{ content }}
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+        <script src="/static/javascripts/jquery.cycle.all.min.js"></script>
         <script src="/static/javascripts/master.js"></script>
     </body>
     
